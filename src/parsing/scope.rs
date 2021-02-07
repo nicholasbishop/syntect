@@ -58,6 +58,17 @@ pub enum ParseScopeError {
     TooManyAtoms,
 }
 
+impl fmt::Display for ParseScopeError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::TooLong => write!(f, "Too long"),
+            Self::TooManyAtoms => write!(f, "Too many atoms"),
+        }
+    }
+}
+
+impl std::error::Error for ParseScopeError {}
+
 /// The structure used to keep track of the mapping between scope atom numbers and their string
 /// names
 ///
